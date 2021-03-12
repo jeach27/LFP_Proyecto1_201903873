@@ -7,7 +7,7 @@ def generarHTML_MER(errores):
     print(errores)
 
 def generarHTML_FS(simbolos):
-    pass
+    print(simbolos)
 
 def generarHTML_FER(errores):
-    pass
+    print(errores)

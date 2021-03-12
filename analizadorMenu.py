@@ -148,10 +148,10 @@ def ingreso(cadena, Limite):
     for c in caracteres:
         analizadorLexico(c)
 
-    if Simbolos:
-        funciones.generarHTML_MS(Simbolos,Limite)
-    elif Errores:
+    if Errores:
         funciones.generarHTML_MER(Errores)
+    elif Simbolos:
+        funciones.generarHTML_MS(Simbolos,Limite)
     else:
         print('\nHa ocurrido un error ingrese el archivo nuevamente')
 

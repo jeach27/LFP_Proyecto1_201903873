@@ -1,5 +1,6 @@
 import Token
 import Error
+import funciones
 
 Simbolos = []
 Errores = []
@@ -80,7 +81,13 @@ def expresionNumero(c):
         flagNumero = False
         return
     elif ord(c) == 44:#,
-        pass
+        Simbolos.append(Token.token(valor,fila,(columna-len(valor)),'NUMERO'))
+        columna += 1
+        valor = c
+        Simbolos.append(Token.token(c,fila,(columna-2),'Simbolo_Coma'))
+        valor = ''
+        flagNumero = False
+        return
 
     columna += 1
     Simbolos.append(Token.token(valor,fila,(columna-1-len(valor)),'NUMERO'))
@@ -126,8 +133,9 @@ def ingreso(cadena):
     for c in caracteres:
         analizadorLexico(c)
         
-    for s in Simbolos:
-        print(s.lexema+s.tipo)
-
-    for a in Errores:
-        print(a.lexema+ a.descripcion)
+    if Errores:
+        funciones.generarHTML_FER(Errores)
+    elif Simbolos:
+        funciones.generarHTML_FS(Simbolos)
+    else:
+        print('\nHa ocurrido un error ingrese el archivo nuevamente')
