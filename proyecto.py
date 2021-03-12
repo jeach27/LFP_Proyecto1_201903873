@@ -1,6 +1,16 @@
 import sys
+import tkinter 
+from tkinter import filedialog
+import analizadorMenu
+import analizadorOrden
+
+def CargarArchivo():
+    archivo = filedialog.askopenfilename(title = 'Cargar Archivo', filetypes = (('lfp files','*.lfp'),('all files','*.')))
+    return archivo
 
 def menu():
+    menu = None
+    orden = None
     while True:
         print('\n-----------Proyecto 1----LFP---------- ')
         print('\nCarné:201903873')
@@ -14,20 +24,58 @@ def menu():
         print('5.Generar Árbol')
         print('6.Salir')
         n=input('\n> Ingrese una opción\n')
+
         if n=='1': 
             print('-----------Cargar Menú--------------') 
+            menu = CargarArchivo()
+            if menu != None:
+                print('\n-> Se ha cargado el archivo Menú correctamente')
+
         elif n=='2':
             print('--------------Cargar Orden-----------')
+            orden = CargarArchivo()
+            if orden != None:
+                print('\n-> Se ha cargado el archivo Orden correctamente')
+
         elif n=='3':
             print('-------------Generar Menú------------')
+            if menu != None:
+                j = input('\nDesea límite de precio en el Menú\n1.Si\n2.No\n')
+                if j =='1':
+                    limite = float(input('Ingrese limite de precio\n'))
+                elif j=='2':
+                    limite = -1
+                else:
+                    print('dato ingresado incorrecto')
+                archivoss = menu
+                with open(archivoss,'r') as archivo:
+                    contenido = archivo.read()
+                    analizadorMenu.ingreso(contenido,limite)
+                    
+            else:
+                print('\n-> No se ha cargado un archivo Menú')
+
         elif n=='4':
             print('------------Generar Factura-------------')
+            if orden != None:
+                archiv = orden
+                with open(archiv,'r') as archivos:
+                    contenid = archivos.read()
+                    analizadorOrden.ingreso(contenid)
+                    
+            else:
+                print('\n-> No se ha cargado un archivo Orden')
+
         elif n=='5':
             print('-----------Generar Árbol--------------')
+
         elif n=='6':
             print('------------Salir-------------')
             print('\n----> Pulsa una tecla para salir\n')
             input("")
             sys.exit()
+
         else:
             print ("No has pulsado una opción correcta")
+
+
