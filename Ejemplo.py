@@ -20,9 +20,7 @@ flagExpresionCadena = False
 flagExpresionNumero = False
 valor = ""
 estado = 0
-
 temp = None
-
 flagAutomataObjeto = False
 
 def mostrarError(simbolo,expectativa,linea,columna):
@@ -81,7 +79,6 @@ def expresionRegularNumero(c):
     tablaSimbolos.append(Simbolo("NUMERO",valor,fila,(columna - 1 - len(valor))))
     valor = ""
     flagExpresionNumero = False
-
 
 def analizadorLexico(c):
     global fila,columna,flagExpresionId,valor,flagExpresionCadena,flagExpresionNumero,valor

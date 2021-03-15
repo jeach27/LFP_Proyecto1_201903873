@@ -10,9 +10,12 @@ flagID = False
 flagNumero = False
 flagCadena = False
 valor = ""
+Atributos = []
+estado = 0
+flagAutomata = False
 
 def isLetter(c):
-    return (ord(c) >= 65 and ord(c) <= 90) or  (ord(c) >= 97 and ord(c) <= 122)
+    return (ord(c) >= 65 and ord(c) <= 90) or  (ord(c) >= 97 and ord(c) <= 122) or (ord(c) >= 160 and ord(c) <= 163) or ord(c) == 130
 
 def isNumber(c):
     return (ord(c) >= 48 and ord(c) <= 57)
@@ -47,11 +50,11 @@ def expresionCadena(c):
     if ord(c) == 39:#'
         columna += 1
         valor += c 
-        Simbolos.append(Token.token(valor,fila,(columna-1-len(valor)),'CADENA'))
+        Simbolos.append(Token.token(valor,fila,(columna-len(valor)),'CADENA'))
         valor = ""
         flagCadena = False
         return 
-    elif ord(c) == 32:# espacio
+    '''elif ord(c) == 32:# espacio
         longitud = len(valor)
         ultima = valor[longitud-1]
         if ultima == ' ':
@@ -59,7 +62,7 @@ def expresionCadena(c):
         else:
             columna += 1
             valor += c
-            return
+            return'''
     columna += 1
     valor += c
 
@@ -74,14 +77,24 @@ def expresionNumero(c):
         valor += c
         return
     elif ord(c) == 37:#%
-        valor += c
-        Simbolos.append(Token.token(valor,fila,(columna-len(valor)),'Porcentaje'))
-        columna += 1
-        valor = ""
-        flagNumero = False
-        return
+        longitud = len(valor)
+        ultima = valor[longitud-1]
+        if ultima == '.':
+            Errores.append(Error.error(valor,'No se encontraron numeros, despues del punto decimal',fila,(columna-1-len(valor))))
+        else:
+            valor += c
+            Simbolos.append(Token.token(valor,fila,(columna-len(valor)),'Porcentaje'))
+            columna += 1
+            valor = ""
+            flagNumero = False
+            return
     elif ord(c) == 44:#,
-        Simbolos.append(Token.token(valor,fila,(columna-len(valor)),'NUMERO'))
+        longitud = len(valor)
+        ultima = valor[longitud-1]
+        if ultima == '.':
+            Errores.append(Error.error(valor,'No se encontraron numeros, despues del punto decimal',fila,(columna-1-len(valor))))
+        else:
+            Simbolos.append(Token.token(valor,fila,(columna-len(valor)),'NUMERO'))
         columna += 1
         valor = c
         Simbolos.append(Token.token(c,fila,(columna-2),'Simbolo_Coma'))
@@ -90,7 +103,12 @@ def expresionNumero(c):
         return
 
     columna += 1
-    Simbolos.append(Token.token(valor,fila,(columna-1-len(valor)),'NUMERO'))
+    longitud = len(valor)
+    ultima = valor[longitud-1]
+    if ultima == '.':
+        Errores.append(Error.error(valor,'No se encontraron numeros, despues del punto decimal',fila,(columna-1-len(valor))))
+    else:
+        Simbolos.append(Token.token(valor,fila,(columna-1-len(valor)),'NUMERO'))
     valor = ""
     flagNumero = False   
 
@@ -128,14 +146,97 @@ def analizadorLexico(c):
     else:
         Errores.append(Error.error(c,'Caracter desconocido',fila,columna))
 
+def automata(s):
+    global Atributos, estado, flagAutomata
+    if estado == 1:
+        if s.tipo == 'Simbolo_Coma':
+            estado = 2
+        else:
+            estado = -1
+            flagAutomata = False
+            Errores.append(Error.error(s.lexema,'Se esperaba un Simbolo_Coma',s.fila,s.columna))
+    elif estado == 2:
+        if s.tipo == 'CADENA':
+            estado = 3
+            Atributos.append(s)
+        else:
+            estado = -1
+            flagAutomata = False
+            Errores.append(Error.error(s.lexema,'Se esperaban Datos del cliente',s.fila,s.columna)) 
+    elif estado == 3:
+        if s.tipo == 'Simbolo_Coma':
+            estado = 4
+        else:
+            estado = -1
+            flagAutomata = False
+            Errores.append(Error.error(s.lexema,'Se esperaba un Simbolo_Coma',s.fila,s.columna))
+    elif estado == 4:
+        if s.tipo == 'CADENA':
+            estado = 5
+            Atributos.append(s)
+        else:
+            estado = -1
+            flagAutomata = False
+            Errores.append(Error.error(s.lexema,'Se esperaban Datos del cliente',s.fila,s.columna)) 
+    elif estado == 5:
+        if s.tipo == 'Simbolo_Coma':
+            estado = 6
+        else:
+            estado = -1
+            flagAutomata = False
+            Errores.append(Error.error(s.lexema,'Se esperaba un Simbolo_Coma',s.fila,s.columna))
+    elif estado == 6:
+        if s.tipo == 'Porcentaje':
+            estado = 7
+            Atributos.append(s)
+        else:
+            estado = -1
+            flagAutomata = False
+            Errores.append(Error.error(s.lexema,'Se esperaba Porcentaje de propina',s.fila,s.columna))
+    elif estado == 7:
+        if s.tipo == 'NUMERO':
+            estado = 8
+            Atributos.append(s) 
+        else:
+            estado = -1
+            flagAutomata = False
+            Errores.append(Error.error(s.lexema,'Se esperaba un numero',s.fila,s.columna))
+    elif estado == 8:
+        if s.tipo == 'Simbolo_Coma':
+            estado = 9
+        else:
+            estado = -1
+            flagAutomata = False
+            Errores.append(Error.error(s.lexema,'Se esperaba un Simbolo_Coma',s.fila,s.columna))
+    elif estado == 9:
+        if s.tipo == 'Identificador':
+            estado = 7
+            Atributos.append(s)
+        else:
+            estado = -1
+            flagAutomata = False
+            Errores.append(Error.error(s.lexema,'Se esperaba un identificador',s.fila,s.columna))
+
 def ingreso(cadena):
+    global estado,flagAutomata, Atributos
     caracteres=list(cadena)
     for c in caracteres:
         analizadorLexico(c)
-        
+
+    for s in Simbolos:
+        if flagAutomata:
+            automata(s)
+        elif s.tipo == 'CADENA':
+            estado = 1
+            flagAutomata = True
+            Atributos.append(Token.token(s.lexema, s.fila, s.columna ,s.tipo))
+        else:
+            Errores.append(Error.error(s,'Se esperaban Datos del cliente',s.fila,s.columna))
+
+
     if Errores:
         funciones.generarHTML_FER(Errores)
-    elif Simbolos:
-        funciones.generarHTML_FS(Simbolos)
+    elif Atributos:
+        funciones.generarHTML_FS(Atributos)
     else:
         print('\nHa ocurrido un error ingrese el archivo nuevamente')

@@ -3,6 +3,7 @@ import tkinter
 from tkinter import filedialog
 import analizadorMenu
 import analizadorOrden
+import funciones
 
 def CargarArchivo():
     archivo = filedialog.askopenfilename(title = 'Cargar Archivo', filetypes = (('lfp files','*.lfp'),('all files','*.')))
@@ -11,6 +12,7 @@ def CargarArchivo():
 def menu():
     menu = None
     orden = None
+    SimboloMenu = None
     while True:
         print('\n-----------Proyecto 1----LFP---------- ')
         print('\nCarné:201903873')
@@ -48,9 +50,9 @@ def menu():
                 else:
                     print('dato ingresado incorrecto')
                 archivoss = menu
-                with open(archivoss,'r') as archivo:
+                with open(archivoss,'r',encoding='utf-8') as archivo:
                     contenido = archivo.read()
-                    analizadorMenu.ingreso(contenido,limite)
+                    SimboloMenu = analizadorMenu.ingreso(contenido,limite)
                     
             else:
                 print('\n-> No se ha cargado un archivo Menú')
@@ -59,7 +61,7 @@ def menu():
             print('------------Generar Factura-------------')
             if orden != None:
                 archiv = orden
-                with open(archiv,'r') as archivos:
+                with open(archiv,'r',encoding='utf-8') as archivos:
                     contenid = archivos.read()
                     analizadorOrden.ingreso(contenid)
                     
@@ -68,6 +70,7 @@ def menu():
 
         elif n=='5':
             print('-----------Generar Árbol--------------')
+            funciones.generarArbol(SimboloMenu)
 
         elif n=='6':
             print('------------Salir-------------')
