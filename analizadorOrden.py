@@ -73,21 +73,38 @@ def expresionNumero(c):
         valor += c
         return 
     elif ord(c) == 46:#.
-        columna += 1
-        valor += c
-        return
+        contadorP = 0
+        for i in range(len(valor)):
+            if valor[i] == '.':
+                contadorP += 1
+        if contadorP > 1:
+            columna += 1
+            valor += c
+            Errores.append(Error.error(valor,'Se encontraron mas de 2 puntos decimal en un Numero',fila,(columna-1-len(valor))))
+        else:
+            columna += 1
+            valor += c
+            return
     elif ord(c) == 37:#%
         longitud = len(valor)
         ultima = valor[longitud-1]
         if ultima == '.':
             Errores.append(Error.error(valor,'No se encontraron numeros, despues del punto decimal',fila,(columna-1-len(valor))))
         else:
-            valor += c
-            Simbolos.append(Token.token(valor,fila,(columna-len(valor)),'Porcentaje'))
-            columna += 1
-            valor = ""
-            flagNumero = False
-            return
+            valor = float(valor)
+            if valor <= 100:
+                valor = str(valor)
+                valor += c
+                Simbolos.append(Token.token(valor,fila,(columna-len(valor)),'Porcentaje'))
+                columna += 1
+                valor = ""
+                flagNumero = False
+                return
+            else:
+                valor = str(valor)
+                valor += c
+                Errores.append(Error.error(valor,'El porcentaje es mayor de 100',fila,(columna-len(valor))))
+
     elif ord(c) == 44:#,
         longitud = len(valor)
         ultima = valor[longitud-1]
@@ -217,8 +234,19 @@ def automata(s):
             flagAutomata = False
             Errores.append(Error.error(s.lexema,'Se esperaba un identificador',s.fila,s.columna))
 
-def ingreso(cadena):
-    global estado,flagAutomata, Atributos
+def ingreso(cadena,AtributosM):
+    global estado,flagAutomata, Atributos, fila,columna,flagID,flagNumero,flagCadena,valor
+    fila = 0
+    columna = 0 
+    flagID = False
+    flagNumero = False
+    flagCadena = False
+    valor = ""
+    estado = 0
+    flagAutomata = False
+    Simbolos.clear()
+    Atributos.clear()
+    Errores.clear()
     caracteres=list(cadena)
     for c in caracteres:
         analizadorLexico(c)
@@ -237,6 +265,6 @@ def ingreso(cadena):
     if Errores:
         funciones.generarHTML_FER(Errores)
     elif Atributos:
-        funciones.generarHTML_FS(Atributos)
+        funciones.generarHTML_FS(Atributos,AtributosM)
     else:
-        print('\nHa ocurrido un error ingrese el archivo nuevamente')
+        print('\n-> Ha ocurrido un error ingrese el archivo nuevamente')

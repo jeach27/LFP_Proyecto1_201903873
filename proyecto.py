@@ -12,7 +12,8 @@ def CargarArchivo():
 def menu():
     menu = None
     orden = None
-    SimboloMenu = None
+    AnalizadorMenu = None
+    entero = None
     while True:
         print('\n-----------Proyecto 1----LFP---------- ')
         print('\nCarné:201903873')
@@ -42,17 +43,17 @@ def menu():
         elif n=='3':
             print('-------------Generar Menú------------')
             if menu != None:
-                j = input('\nDesea límite de precio en el Menú\n1.Si\n2.No\n')
+                j = input('\n Desea límite de precio en el Menú\n1.Si\n2.No\n')
                 if j =='1':
                     limite = float(input('Ingrese limite de precio\n'))
                 elif j=='2':
                     limite = -1
                 else:
-                    print('dato ingresado incorrecto')
+                    print('\n-> dato ingresado incorrecto')
                 archivoss = menu
                 with open(archivoss,'r',encoding='utf-8') as archivo:
                     contenido = archivo.read()
-                    SimboloMenu = analizadorMenu.ingreso(contenido,limite)
+                    entero,AnalizadorMenu = analizadorMenu.ingreso(contenido,limite)
                     
             else:
                 print('\n-> No se ha cargado un archivo Menú')
@@ -60,17 +61,26 @@ def menu():
         elif n=='4':
             print('------------Generar Factura-------------')
             if orden != None:
-                archiv = orden
-                with open(archiv,'r',encoding='utf-8') as archivos:
-                    contenid = archivos.read()
-                    analizadorOrden.ingreso(contenid)
-                    
+                if entero == -1:
+                    print('\n-> El archivo menu procesado tiene errores')
+                elif entero == 1:
+                    archiv = orden
+                    with open(archiv,'r',encoding='utf-8') as archivos:
+                        contenid = archivos.read()
+                        analizadorOrden.ingreso(contenid,AnalizadorMenu)
+                else:
+                    print('\n-> No ha procesado un archivo menu')
             else:
                 print('\n-> No se ha cargado un archivo Orden')
 
         elif n=='5':
             print('-----------Generar Árbol--------------')
-            funciones.generarArbol(SimboloMenu)
+            if entero == -1:
+                funciones.generarHTML_MER(AnalizadorMenu)
+            elif entero == 1:
+                funciones.generarArbol(AnalizadorMenu)
+            else:
+                print('\n-> No ha procesado un archivo menu')
 
         elif n=='6':
             print('------------Salir-------------')
@@ -79,6 +89,6 @@ def menu():
             sys.exit()
 
         else:
-            print ("No has pulsado una opción correcta")
+            print ("\n-> No has pulsado una opción correcta")
 
 

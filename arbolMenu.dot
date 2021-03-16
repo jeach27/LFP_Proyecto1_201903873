@@ -1,0 +1,69 @@
+digraph G{
+A[label="'TACO BELL A DOMICILIO - Live Mas'", shape="circle"]
+<Token.token object at 0x000002B4AF290F40>[label="'PROMOCIONES'",shape="circle"]
+<Token.token object at 0x000002B4AF29DA30>[label="'FAMILY BOX SUPREME (PARA 6)'145
+'3 Burritos 5 capas, 3 Crunchywrap supreme, 2 Quesadillas de Pollo, 1 Nachos Supreme, 2 Cinnamon Twists.'",shape="box"]
+<Token.token object at 0x000002B4AF2E6B20>[label="'FAMILY BOX GRANDE (PARA 4)'49
+'2 Chalupas Supreme de Pollo Frito, 2 Burritos 5 capas, 4 Tacos Suaves, 1 Nachos Supreme y 2 Cinnamon Twists.'",shape="box"]
+<Token.token object at 0x000002B4AF2E6E80>[label="'FAMILY BOX MEDIANO (PARA 2)'99
+'2 Crunchywrap Supreme, 2 Tacos Suaves de Carne + 1 Nacho Supreme.'",shape="box"]
+<Token.token object at 0x000002B4AF2E6F40>[label="'Combos'",shape="circle"]
+<Token.token object at 0x000002B4AF57A2B0>[label="'COMBO #2 - BURRITO 1/2LB CRUNCHY'32.00
+'Burrito 1/2Lb Crunchy, Complemento a elegir y bebida lata.'",shape="box"]
+<Token.token object at 0x000002B4AF57A610>[label="'COMBO #3 - BURRITO 5 CAPAS'32.00
+'Burrito 5 Capas, Complemento a elegir y bebida lata.'",shape="box"]
+<Token.token object at 0x000002B4AF57A970>[label="'COMBO #1 - CHALUPA BAJA'32
+'Chalupa Baja, Complemento a elegir y bebida lata.'",shape="box"]
+<Token.token object at 0x000002B4AF57AA30>[label="'Individuales'",shape="circle"]
+<Token.token object at 0x000002B4AF57AD90>[label="'NACHO CRUNCHY BURRITO'17
+'Carne sazonada, salsa queso, tiras rojas, crema agria, tomate envuelto en una tortilla de harina.'",shape="box"]
+<Token.token object at 0x000002B4AF57C130>[label="'STACKER DE CARNE'14.0
+'Carne sazonada, salsa queso, mezcla de 3 quesos derretidos a la perfección dentro una tortilla de harina a la plancha en forma de triángulo.'",shape="box"]
+<Token.token object at 0x000002B4AF57C4C0>[label="'GORDITA CRUNCH'18.00
+'Flatbread a la plancha con abundante queso derretido, salsa spicy ranch, envuelto en un Taco original.'",shape="box"]
+<Token.token object at 0x000002B4AF57C820>[label="'BURRITO 5 CAPAS'16.000
+'Deliciosa carne sazonada, frijoles, salsa queso, crema agria, auténtico queso cheddar envuelto en una tortilla de harina.'",shape="box"]
+<Token.token object at 0x000002B4AF57C8E0>[label="'Complementos'",shape="circle"]
+<Token.token object at 0x000002B4AF57CC40>[label="'PAPAS SUPREME'19
+'Deliciosas Papas Fritas con carne sazonada, salsa queso, crema agria, tomate y cebollín.'",shape="box"]
+<Token.token object at 0x000002B4AF57CFA0>[label="'NACHOS SUPREME'18
+'Deliciosos Nacho chips servidos con frijoles, carne sazonada, salsa queso, crema agria, tomate fresco y cebollín.'",shape="box"]
+<Token.token object at 0x000002B4AF57E0A0>[label="'Postres'",shape="circle"]
+<Token.token object at 0x000002B4AF57E400>[label="'CINNAMON TWISTS'11
+''",shape="box"]
+<Token.token object at 0x000002B4AF57E760>[label="'FLAUTA DE DULCE DE LECHE'11
+''",shape="box"]
+<Token.token object at 0x000002B4AF57E820>[label="'Bebidas'",shape="circle"]
+<Token.token object at 0x000002B4AF57EB80>[label="'PEPSI LIGHT'10.00
+'Lata'",shape="box"]
+<Token.token object at 0x000002B4AF57EEE0>[label="'AGUA PURA'10.00
+'AQUA 600ml'",shape="box"]
+<Token.token object at 0x000002B4AF57F280>[label="'PEPSI'10.00
+'Lata'",shape="box"]
+<Token.token object at 0x000002B4AF57F5E0>[label="'BE LIGHT'15.00
+'Botella 600ml'",shape="box"]
+A-><Token.token object at 0x000002B4AF290F40>
+<Token.token object at 0x000002B4AF290F40>-><Token.token object at 0x000002B4AF29DA30>
+<Token.token object at 0x000002B4AF290F40>-><Token.token object at 0x000002B4AF2E6B20>
+<Token.token object at 0x000002B4AF290F40>-><Token.token object at 0x000002B4AF2E6E80>
+A-><Token.token object at 0x000002B4AF2E6F40>
+<Token.token object at 0x000002B4AF2E6F40>-><Token.token object at 0x000002B4AF57A2B0>
+<Token.token object at 0x000002B4AF2E6F40>-><Token.token object at 0x000002B4AF57A610>
+<Token.token object at 0x000002B4AF2E6F40>-><Token.token object at 0x000002B4AF57A970>
+A-><Token.token object at 0x000002B4AF57AA30>
+<Token.token object at 0x000002B4AF57AA30>-><Token.token object at 0x000002B4AF57AD90>
+<Token.token object at 0x000002B4AF57AA30>-><Token.token object at 0x000002B4AF57C130>
+<Token.token object at 0x000002B4AF57AA30>-><Token.token object at 0x000002B4AF57C4C0>
+<Token.token object at 0x000002B4AF57AA30>-><Token.token object at 0x000002B4AF57C820>
+A-><Token.token object at 0x000002B4AF57C8E0>
+<Token.token object at 0x000002B4AF57C8E0>-><Token.token object at 0x000002B4AF57CC40>
+<Token.token object at 0x000002B4AF57C8E0>-><Token.token object at 0x000002B4AF57CFA0>
+A-><Token.token object at 0x000002B4AF57E0A0>
+<Token.token object at 0x000002B4AF57E0A0>-><Token.token object at 0x000002B4AF57E400>
+<Token.token object at 0x000002B4AF57E0A0>-><Token.token object at 0x000002B4AF57E760>
+A-><Token.token object at 0x000002B4AF57E820>
+<Token.token object at 0x000002B4AF57E820>-><Token.token object at 0x000002B4AF57EB80>
+<Token.token object at 0x000002B4AF57E820>-><Token.token object at 0x000002B4AF57EEE0>
+<Token.token object at 0x000002B4AF57E820>-><Token.token object at 0x000002B4AF57F280>
+<Token.token object at 0x000002B4AF57E820>-><Token.token object at 0x000002B4AF57F5E0>
+}
