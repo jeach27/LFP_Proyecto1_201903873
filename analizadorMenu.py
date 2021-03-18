@@ -30,7 +30,7 @@ def expresionID(c):
         valor += c
         columna += 1
         return
-    elif ord(c) == 32:#"espacio
+    elif ord(c) == 32:#espacio
         #valor += c
         columna += 1
         if valor == 'restaurante' or valor == 'Restaurante':

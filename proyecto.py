@@ -14,6 +14,7 @@ def menu():
     orden = None
     AnalizadorMenu = None
     entero = None
+    contador = 0
     while True:
         print('\n-----------Proyecto 1----LFP---------- ')
         print('\nCarné:201903873')
@@ -64,10 +65,11 @@ def menu():
                 if entero == -1:
                     print('\n-> El archivo menu procesado tiene errores')
                 elif entero == 1:
+                    contador += 1
                     archiv = orden
                     with open(archiv,'r',encoding='utf-8') as archivos:
                         contenid = archivos.read()
-                        analizadorOrden.ingreso(contenid,AnalizadorMenu)
+                        analizadorOrden.ingreso(contenid,AnalizadorMenu,contador)
                 else:
                     print('\n-> No ha procesado un archivo menu')
             else:

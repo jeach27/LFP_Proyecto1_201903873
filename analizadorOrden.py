@@ -30,8 +30,7 @@ def expresionID(c):
         valor += c
         columna += 1
         return
-    elif ord(c) == 32:#"espacio
-        valor += c
+    elif ord(c) == 32:#espacio
         columna += 1
         Simbolos.append(Token.token(valor,fila,(columna-1-len(valor)),'Identificador'))
         valor = ""
@@ -94,7 +93,6 @@ def expresionNumero(c):
             valor = float(valor)
             if valor <= 100:
                 valor = str(valor)
-                valor += c
                 Simbolos.append(Token.token(valor,fila,(columna-len(valor)),'Porcentaje'))
                 columna += 1
                 valor = ""
@@ -234,7 +232,7 @@ def automata(s):
             flagAutomata = False
             Errores.append(Error.error(s.lexema,'Se esperaba un identificador',s.fila,s.columna))
 
-def ingreso(cadena,AtributosM):
+def ingreso(cadena,AtributosM,contador):
     global estado,flagAutomata, Atributos, fila,columna,flagID,flagNumero,flagCadena,valor
     fila = 0
     columna = 0 
@@ -265,6 +263,6 @@ def ingreso(cadena,AtributosM):
     if Errores:
         funciones.generarHTML_FER(Errores)
     elif Atributos:
-        funciones.generarHTML_FS(Atributos,AtributosM)
+        funciones.generarHTML_FS(Atributos,AtributosM,contador)
     else:
         print('\n-> Ha ocurrido un error ingrese el archivo nuevamente')
