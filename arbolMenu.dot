@@ -1,21 +1,21 @@
 digraph G{
 A[label="'Restaurante LFP'", shape="oval", fillcolor="lightsteelblue1"]
-<Token.token object at 0x00000214C58F6430>[label="'Bebidas'",shape="ellipse",fillcolor=deepskyblue]
-<Token.token object at 0x00000214C58FEBE0>[label="{ { 'Bebida #1' | Q 11.0 | 'Descripción Bebida 1' } }",shape="Mrecord",fillcolor=lightslateblue]
-<Token.token object at 0x00000214C58FE7F0>[label="{ { 'Bebida #2' | Q 10.5 | 'Descripción Bebida 2' } }",shape="Mrecord",fillcolor=lightslateblue]
-<Token.token object at 0x00000214C58FE670>[label="'Desayunos'",shape="ellipse",fillcolor=deepskyblue]
-<Token.token object at 0x00000214C58FE220>[label="{ { 'Desayuno 1' | Q 45.0 | 'Descripción Desayuno 1' } }",shape="Mrecord",fillcolor=lightslateblue]
-<Token.token object at 0x00000214C590B580>[label="{ { 'Desayuno 2' | Q 40.0 | 'Descripción Desayuno 2' } }",shape="Mrecord",fillcolor=lightslateblue]
-<Token.token object at 0x00000214C590B790>[label="{ { 'Desayuno 3' | Q 35.0 | 'Descripción Desayuno 3' } }",shape="Mrecord",fillcolor=lightslateblue]
-<Token.token object at 0x00000214C590B820>[label="'  Postres'",shape="ellipse",fillcolor=deepskyblue]
-<Token.token object at 0x00000214C590BFA0>[label="{ { 'Postre 1' | Q 25.0 | 'Descripción Postre 1' } }",shape="Mrecord",fillcolor=lightslateblue]
-A-><Token.token object at 0x00000214C58F6430>
-<Token.token object at 0x00000214C58F6430>-><Token.token object at 0x00000214C58FEBE0>
-<Token.token object at 0x00000214C58F6430>-><Token.token object at 0x00000214C58FE7F0>
-A-><Token.token object at 0x00000214C58FE670>
-<Token.token object at 0x00000214C58FE670>-><Token.token object at 0x00000214C58FE220>
-<Token.token object at 0x00000214C58FE670>-><Token.token object at 0x00000214C590B580>
-<Token.token object at 0x00000214C58FE670>-><Token.token object at 0x00000214C590B790>
-A-><Token.token object at 0x00000214C590B820>
-<Token.token object at 0x00000214C590B820>-><Token.token object at 0x00000214C590BFA0>
+<Token.token object at 0x000001E9455D2550>[label="'Bebidas'",shape="ellipse",fillcolor=deepskyblue]
+<Token.token object at 0x000001E945905760>[label="{ { 'Bebida #1' | Q 11.0 | 'Descripción Bebida 1' } }",shape="Mrecord",fillcolor=lightslateblue]
+<Token.token object at 0x000001E945905E80>[label="{ { 'Bebida #2' | Q 10.5 | 'Descripción Bebida 2' } }",shape="Mrecord",fillcolor=lightslateblue]
+<Token.token object at 0x000001E945905F40>[label="'Desayunos'",shape="ellipse",fillcolor=deepskyblue]
+<Token.token object at 0x000001E9458F8A90>[label="{ { 'Desayuno 1' | Q 45.0 | 'Descripción Desayuno 1' } }",shape="Mrecord",fillcolor=lightslateblue]
+<Token.token object at 0x000001E9458F85B0>[label="{ { 'Desayuno 2' | Q 40.0 | 'Descripción Desayuno 2' } }",shape="Mrecord",fillcolor=lightslateblue]
+<Token.token object at 0x000001E9458F8190>[label="{ { 'Desayuno 3' | Q 35.0 | 'Descripción Desayuno 3' } }",shape="Mrecord",fillcolor=lightslateblue]
+<Token.token object at 0x000001E9458F80A0>[label="'  Postres'",shape="ellipse",fillcolor=deepskyblue]
+<Token.token object at 0x000001E9458F0A30>[label="{ { 'Postre 1' | Q 25.0 | 'Descripción Postre 1' } }",shape="Mrecord",fillcolor=lightslateblue]
+A-><Token.token object at 0x000001E9455D2550>
+<Token.token object at 0x000001E9455D2550>-><Token.token object at 0x000001E945905760>
+<Token.token object at 0x000001E9455D2550>-><Token.token object at 0x000001E945905E80>
+A-><Token.token object at 0x000001E945905F40>
+<Token.token object at 0x000001E945905F40>-><Token.token object at 0x000001E9458F8A90>
+<Token.token object at 0x000001E945905F40>-><Token.token object at 0x000001E9458F85B0>
+<Token.token object at 0x000001E945905F40>-><Token.token object at 0x000001E9458F8190>
+A-><Token.token object at 0x000001E9458F80A0>
+<Token.token object at 0x000001E9458F80A0>-><Token.token object at 0x000001E9458F0A30>
 }

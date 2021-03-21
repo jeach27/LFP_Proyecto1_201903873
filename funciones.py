@@ -498,5 +498,5 @@ def generarArbol(simbolos):
      
     file.write('}')
     file.close()
-    os.system('dot -Tpng arbolMenu.dot -o arbolMenu.jpg')
-    os.startfile('arbolMenu.jpg')
+    os.system('dot -Tpdf arbolMenu.dot -o arbolMenu.pdf')
+    os.startfile('arbolMenu.pdf')
